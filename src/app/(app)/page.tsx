@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
+
 import {
   Carousel,
   CarouselContent,
@@ -7,15 +9,24 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import messages from "@/messages.json";
 import Autoplay from "embla-carousel-autoplay";
+import { Mail } from "lucide-react";
 
-const Home = () => {
+// carausel page
+export default function Home() {
   return (
     <>
-      <main className="flex flex-grow  flex-col items-center justify-center px-4 md:px-24 py-12">
-        <section className="text-center mb-8 md:mb-12">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-[#6c84d9] text-white h-[78vh]">
+        <section className="text-center mb-8 md:mb-12 w-full">
           <h1 className="text-3xl md:text-5xl font-bold">
             Dive into the World of Anonymous Feedback
           </h1>
@@ -23,24 +34,27 @@ const Home = () => {
             True Feedback - Where your identity remains a secret.
           </p>
         </section>
-
         <Carousel
           plugins={[Autoplay({ delay: 2000 })]}
-          className="w-full max-w-xs"
+          className="w-full max-w-lg md:max-w-xl"
         >
           <CarouselContent>
             {messages.map((message, index) => (
-              <CarouselItem key={index}>
-                <div className="p-1">
-                  <Card>
-                    <CardHeader>{message.title}</CardHeader>
-                    <CardContent className="flex aspect-square items-center justify-center p-6">
-                      <span className="text-lg font-semibold">
-                        {message.content}
-                      </span>
-                    </CardContent>
-                  </Card>
-                </div>
+              <CarouselItem key={index} className="p-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{message.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
+                    <Mail className="flex-shrink-0" />
+                    <div>
+                      <p>{message.content}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {message.received}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -48,11 +62,11 @@ const Home = () => {
           <CarouselNext />
         </Carousel>
       </main>
-      <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
-        © 2023 True Feedback. All rights reserved.
+
+      {/* footer component */}
+      <footer className="text-center p-4 md:p-6 bg-[#929de0] text-white">
+        © 2023 Mystery Message. All rights reserved.
       </footer>
     </>
   );
-};
-
-export default Home;
+}

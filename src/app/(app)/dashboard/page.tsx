@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import MessageCard from "@/components/MessageCard";
+import {MessageCard} from "@/components/MessageCard";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
 import { Loader2, RefreshCcw } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { useCallback, useEffect, useState } from "react";
+import { Key, useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Dashboard = () => {
@@ -54,7 +54,7 @@ const Dashboard = () => {
     } finally {
       setIsSwitchLoading(false);
     }
-  }, [setValue]);
+  }, [setValue,toast]);
 
   const fetchMessages = useCallback(
     async (refresh: boolean = false) => {
@@ -84,14 +84,14 @@ const Dashboard = () => {
         setIsLoading(false);
       }
     },
-    [setIsLoading, setMessages]
+    [setIsLoading, setMessages, toast]
   );
 
   useEffect(() => {
     if (!session || !session.user) return;
     fetchMessages();
     fetchAcceptMessages();
-  }, [session, setValue, fetchAcceptMessages, fetchMessages]);
+  }, [session, setValue, fetchAcceptMessages, fetchMessages, toast]);
 
   //handle switch change
   const handleSwitchChange = async () => {
@@ -182,7 +182,7 @@ const Dashboard = () => {
         {messages.length > 0 ? (
           messages.map((message, index) => (
             <MessageCard
-              key={message._id as string} //forcufully added string
+              key={message._id as Key} //forcefully added string
               message={message}
               onMessageDelete={handleDeleteMessage}
             />

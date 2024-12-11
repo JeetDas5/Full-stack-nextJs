@@ -22,10 +22,9 @@ import { signIn } from "next-auth/react";
 
 const Page = () => {
   const { toast } = useToast();
-
   const router = useRouter();
 
-  //zod implementation
+  // zod implementation
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -40,29 +39,26 @@ const Page = () => {
       identifier: data.identifier,
       password: data.password,
     });
-    if (result?.error) {
-      // toast({
-      //   title: "Login failed",
-      //   description: "Incorrect username or password",
-      //   variant: "destructive",
-      // });
-      if (result?.error === "CredentialsSignIn") {
-        toast({
-          title: "Login failed",
-          description: "Incorrect username or password",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Login error",
-          description: result.error,
-          variant: "destructive",
-        });
-      }
-    }
 
-    if (result?.url) {
+    if (result?.error) {
+      toast({
+        title: "Login failed",
+        description: "Incorrect username or password",
+        variant: "destructive",
+      });
+    } else if (result?.url) {
+      toast({
+        title: "Login successful",
+        description: "Welcome back!",
+        variant: "default",
+      });
       router.replace("/dashboard");
+    } else {
+      toast({
+        title: "Login error",
+        description: "Unexpected error occurred",
+        variant: "destructive",
+      });
     }
   };
 
@@ -71,7 +67,7 @@ const Page = () => {
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Join Mystery message
+            Join Mystery Message
           </h1>
           <p className="mb-4">Sign in to start your anonymous adventure</p>
         </div>
@@ -121,4 +117,5 @@ const Page = () => {
     </div>
   );
 };
+
 export default Page;

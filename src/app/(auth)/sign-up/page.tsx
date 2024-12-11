@@ -48,6 +48,7 @@ const Page = () => {
     const checkUsernameUnique = async () => {
       if (username) {
         setIsCheckingUsername(true);
+        setUsernameMessage("");
         try {
           const response = await axios.get(
             `/api/check-username-unique?username=${username}`
@@ -121,7 +122,9 @@ const Page = () => {
                     />
                   </FormControl>
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
-                  <p className={`text-sm ${usernameMessage === "Username is unique" ? 'text-green-500':'text-red-500'}`}>
+                  <p
+                    className={`text-sm ${usernameMessage === "Username is unique" ? "text-green-500" : "text-red-500"}`}
+                  >
                     test {usernameMessage}
                   </p>
                   <FormMessage />
@@ -158,7 +161,7 @@ const Page = () => {
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Please Wait
+                  Please Wait...
                 </>
               ) : (
                 "Sign up"
