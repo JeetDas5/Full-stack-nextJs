@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* footer component */}
       <footer className="text-center p-4 md:p-6 bg-[#929de0] text-white">
-        © 2023 Mystery Message. All rights reserved.
+        © 2024 Mystery Message. All rights reserved.
       </footer>
     </>
   );
