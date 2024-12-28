@@ -131,6 +131,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 
 For any queries or feedback, feel free to reach out:
-- Email: jeetdas15083011@gmail.com
+- Email: jeet15083011@gmail.com
 - GitHub: [JeetDas5](https://github.com/JeetDas5)
 
