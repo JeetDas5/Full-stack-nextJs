@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
+//There is no need of this route, as we are handling this in client side
+
+
+
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 // import { GoogleGenerativeAIStream, Message, StreamingTextResponse } from "ai";
 
