@@ -76,13 +76,12 @@ Follow these steps to set up the project locally:
 ├── /components       # Reusable UI components
 ├── /hooks            # Hooks
 ├── /lib              # Resend and Database utilities
-├── /helpers          # helper files
+├── /helpers          # Helper files
 ├── /models           # User models
 ├── /schemas          # Zod validation schemas
 ├── /types            # Types for typescript
 ├── /api              # API routes for backend logic
 ├── /context          # Authprovider
-├── /api              # API routes for backend logic
 ├── /middleware.js    # Handling Middleware
 └── /public           # Static assets
 ```
@@ -131,6 +130,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 
 For any queries or feedback, feel free to reach out:
-- Email: jeetdas15083011@gmail.com
+- Email: jeet15083011@gmail.com
 - GitHub: [JeetDas5](https://github.com/JeetDas5)
 
