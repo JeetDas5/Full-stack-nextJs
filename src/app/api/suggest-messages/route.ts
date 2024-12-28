@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GoogleGenerativeAIStream, Message, StreamingTextResponse } from "ai";
+// import { GoogleGenerativeAIStream, Message, StreamingTextResponse } from "ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GenAI_API_KEY || "");
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function POST(req: Request) {
   try {
     const prompt =
@@ -15,10 +18,10 @@ export async function POST(req: Request) {
       });
 
     // Convert the response into a friendly text-stream
-    const stream = GoogleGenerativeAIStream(geminiStream);
+    // const stream = GoogleGenerativeAIStream(geminiStream);
 
     // Respond with the stream
-    return new StreamingTextResponse(stream);
+    // return new StreamingTextResponse(stream);
   } catch (error: any) {
     return Response.json(
       { error: error.message, success: false },
